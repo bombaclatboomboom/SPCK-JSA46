@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINJUKU SHOWDOWN: FINAL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div class="noise-overlay"></div>
+
+        <!-- TRANSITION: THE CURTAIN -->
+        <div id="curtain-layer">
+            <div class="curtain-black" id="c-black"></div>
+            <div class="curtain-text" id="c-text">EMERGE FROM DARKNESS</div>
+            <div class="curtain-line" id="c-line"></div>
+        </div>
+
+        <!-- INTRO LAYER (Dynamic Content) -->
+        <div id="intro-layer">
+            <!-- Vis Head will be injected here by UI.js -->
+            <div class="vis-head" id="intro-face"></div>
+            <div class="intro-text" id="intro-name"></div>
+        </div>
+
+        <!-- UI LAYER -->
+        <div id="ui-layer" style="display:none;">
+            <div class="hud-top">
+                <div class="fighter-hud" id="hud-p1">
+                    <div class="name-tag" id="p1-name">YUJI</div>
+                    <div class="bar-wrap"><div class="bar-fill hp" id="p1-hp"></div></div>
+                    <div class="bar-wrap"><div class="bar-fill ce" id="p1-ce"></div></div>
+                    <div class="bar-wrap"><div class="bar-fill domain-gauge" id="p1-domain"></div></div>
+                    <div class="bar-wrap" style="height:4px;"><div class="bar-fill fatigue" id="p1-fatigue"></div></div>
+                </div>
+                <div class="fighter-hud" id="hud-p2" style="text-align: right;">
+                    <div class="name-tag" id="p2-name">SUKUNA</div>
+                    <div class="bar-wrap"><div class="bar-fill hp" id="p2-hp" style="float:right;"></div></div>
+                    <div class="bar-wrap"><div class="bar-fill ce" id="p2-ce" style="float:right;"></div></div>
+                    <div class="bar-wrap"><div class="bar-fill domain-gauge" id="p2-domain" style="float:right;"></div></div>
+                </div>
+            </div>
+            <div id="alert-banner">DOMAIN EXPANSION</div>
+            <div id="bf-counter">BLACK FLASH x1</div>
+            <div class="hud-bottom">
+                <div class="skills-row">
+                    <div class="skill-box" id="sk-u"><span class="skill-key">U</span><span class="skill-name" id="name-u">Skill 1</span><div class="cd-overlay" id="cd-u"></div></div>
+                    <div class="skill-box" id="sk-i"><span class="skill-key">I</span><span class="skill-name" id="name-i">Skill 2</span><div class="cd-overlay" id="cd-i"></div></div>
+                    <div class="skill-box" id="sk-o" style="border-color:gold;"><span class="skill-key">O</span><span class="skill-name" id="name-o">Domain</span><div class="cd-overlay" id="cd-o"></div></div>
+                    <div class="skill-box" id="sk-p" style="border-color:#a855f7;"><span class="skill-key">P</span><span class="skill-name" id="name-p">Ult</span><div class="cd-overlay" id="cd-p"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN MENU -->
+        <div id="main-menu" class="menu-screen">
+            <h1 class="jjk-title">SHINJUKU<br>SHOWDOWN</h1>
+            <div class="menu-line"></div>
+            <button class="btn-start" id="btn-to-select">ENTER THE CULLING GAME</button>
+        </div>
+
+        <!-- CHARACTER SELECT -->
+        <div id="char-select" class="menu-screen" style="display:none; justify-content: flex-start; padding-top: 20px;">
+            <div class="cs-header">CHOOSE YOUR SORCERER</div>
+            
+            <div class="vs-stage">
+                <!-- PLAYER 1 -->
+                <div class="p-card" id="p1-card">
+                    <div class="p-model" id="p1-model"></div>
+                    <div class="p-info">
+                        <h2 id="p1-sel-name">PLAYER 1</h2>
+                        <p id="p1-desc" class="lore-text">Select Character...</p>
+                    </div>
+                </div>
+
+                <!-- VS CENTER -->
+                <div class="vs-center">
+                    <span class="vs-text">VS</span>
+                </div>
+
+                <!-- PLAYER 2 -->
+                <div class="p-card" id="p2-card">
+                    <div class="p-model" id="p2-model"></div>
+                    <div class="p-info">
+                        <h2 id="p2-sel-name" style="color:#ef4444">OPPONENT</h2>
+                        <p id="p2-desc" class="lore-text">Waiting...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROSTER GRID -->
+            <div class="roster-area">
+                <div class="roster-grid" id="roster-grid"></div>
+            </div>
+            
+            <div class="instruction-text" id="select-instruction">PLAYER 1: SELECT</div>
+        </div>
+        
+        <div id="win-screen" class="menu-screen" style="display:none;">
+            <h1 id="winner-name">YUJI WINS</h1>
+            <button class="btn-start" onclick="location.reload()">REMATCH</button>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
